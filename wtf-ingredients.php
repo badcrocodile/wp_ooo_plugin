@@ -22,6 +22,7 @@ if(!defined( 'WPINC')) {
     die;
 }
 
+use IngredientManager\AddAction;
 use IngredientManager\EnqueueScript;
 use PostTypes\PostType;
 
@@ -50,12 +51,8 @@ register_deactivation_hook( __FILE__, 'deactivate_plugin_slug' );
 require_once plugin_dir_path(__FILE__) . 'vendor/autoload.php';
 
 /**
- * Enqueue all of our scripts and styles
- */
-$scripts = new EnqueueScript();
-
-/**
  * Create CPT to hold the ingredient list & also create related taxonomies
+ * @link https://github.com/jjgrainger/PostTypes
  */
 $cpt_rock_ingredients_opts = array(
     'name' => 'rock_ingredient',
@@ -69,28 +66,17 @@ $tax_function_opts = array(
 $tax_type_opts = array(
     'hierarchical' => true
 );
+// Create our CPT
 $rock_ingredients = new PostType($cpt_rock_ingredients_opts);
+// Add our taxonomies
 $rock_ingredients->taxonomy('function', $tax_function_opts);
 $rock_ingredients->taxonomy('type', $tax_type_opts);
 
-
 /**
- * Since everything from here is action or filter based,
- * kick things off by registering your actions or filters.
+ * Enqueue all of our scripts and styles
  */
+add_action('wp_enqueue_scripts', array(new AddAction(), 'enqueue_scripts'));
 
-/**
- * Add actions can be registered using the following format
- */
+// Adding filters:
+// add_filter('authenticate', array(new AddFilter(), 'method_name') 1, 3);
 
-
-// // Add new fields to profile page
-// add_action('show_user_profile', array(new Profile(), 'create_profile_fields'));
-// add_action('edit_user_profile', array(new Profile(), 'create_profile_fields'));
-// // Save data from new fields on profile page
-// add_action('personal_options_update', array(new Profile(), 'save_profile_fields'));
-// add_action('edit_user_profile_update', array(new Profile(), 'save_profile_fields'));
-// // This is where we hijack the login sequence and use our own.
-// add_filter('authenticate', array(new Login, 'intercept_login'), 1, 3);
-// // Remove default WP authentication hook
-// remove_filter('authenticate', 'wp_authenticate_username_password', 20, 3);
