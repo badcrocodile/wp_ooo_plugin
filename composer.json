@@ -1,0 +1,20 @@
+{
+    "name" : "wtf/ingredients",
+    "description": "ROCK Ingredient Manager",
+    "type": "wordpress-plugin",
+
+    "authors": [
+        {
+            "name": "Web Tools & Frameworks",
+            "email": "wtf@wholefoods.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "IngredientManager\\": "app/"
+        }
+    },
+    "require": {
+        "jjgrainger/posttypes": "1.0"
+    }
+}
