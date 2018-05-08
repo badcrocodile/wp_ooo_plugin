@@ -1,20 +1,20 @@
 <?php
 
 /**
- * @link              https://wfmdigiweb.atlassian.net/wiki/spaces/NON/overview
+ * @link              https://linktodocs.com
  * @since             1.0.0
  * @package           IngredientManager
  *
  * @wordpress-plugin
- * Plugin Name:       ROCK Ingredient Manager
- * Plugin URI:        https://wfmdigiweb.atlassian.net/wiki/spaces/NON/overview
- * Description:       Manages the list of acceptable and unacceptable ingredients
+ * Plugin Name:       Ingredient Manager
+ * Plugin URI:        https://linktopluginuri.com
+ * Description:       A Description
  * Version:           1.0.0
  * Author:            WT&F
- * Author URI:        https://wfmdigiweb.atlassian.net/wiki/spaces/NON/overview
+ * Author URI:        https://linktoauthoruri
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
- * Text Domain:       ingredient-manager
+ * Text Domain:       wtf
  */
 
 // If this file is called directly, abort.
